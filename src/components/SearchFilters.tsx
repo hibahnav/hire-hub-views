@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Search } from "lucide-react";
+import { Search, MapPin } from "lucide-react";
 
 interface SearchFiltersProps {
   onSearch: (filters: {
@@ -43,13 +43,13 @@ export function SearchFilters({ onSearch }: SearchFiltersProps) {
         
         <div>
           <label htmlFor="location" className="text-sm font-medium mb-2 block">
-            Location
+            Country
           </label>
           <div className="relative">
             <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
             <Input
               id="location"
-              placeholder="City, state, or remote"
+              placeholder="Country"
               className="pl-10"
               value={location}
               onChange={(e) => setLocation(e.target.value)}
@@ -66,24 +66,4 @@ export function SearchFilters({ onSearch }: SearchFiltersProps) {
       </div>
     </div>
   );
-}
-
-function MapPin(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-      <circle cx="12" cy="10" r="3" />
-    </svg>
-  )
 }
