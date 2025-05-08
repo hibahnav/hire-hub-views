@@ -2,39 +2,29 @@
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { 
-  Select, 
-  SelectContent, 
-  SelectItem, 
-  SelectTrigger, 
-  SelectValue 
-} from "@/components/ui/select";
-import { Search, Filter } from "lucide-react";
+import { Search } from "lucide-react";
 
 interface SearchFiltersProps {
   onSearch: (filters: {
     query: string;
     location: string;
-    jobType: string;
   }) => void;
 }
 
 export function SearchFilters({ onSearch }: SearchFiltersProps) {
   const [query, setQuery] = useState("");
   const [location, setLocation] = useState("");
-  const [jobType, setJobType] = useState("all");
   
   const handleSearch = () => {
     onSearch({
       query,
-      location,
-      jobType: jobType === "all" ? "" : jobType
+      location
     });
   };
 
   return (
     <div className="bg-white rounded-lg p-6 shadow-sm border">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="col-span-1 md:col-span-2">
           <label htmlFor="search" className="text-sm font-medium mb-2 block">
             Job Title, Keywords, or Company
@@ -66,32 +56,10 @@ export function SearchFilters({ onSearch }: SearchFiltersProps) {
             />
           </div>
         </div>
-        
-        <div>
-          <label htmlFor="job-type" className="text-sm font-medium mb-2 block">
-            Job Type
-          </label>
-          <Select
-            value={jobType}
-            onValueChange={setJobType}
-          >
-            <SelectTrigger id="job-type" className="w-full">
-              <SelectValue placeholder="All job types" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">All job types</SelectItem>
-              <SelectItem value="Full-time">Full-time</SelectItem>
-              <SelectItem value="Part-time">Part-time</SelectItem>
-              <SelectItem value="Contract">Contract</SelectItem>
-              <SelectItem value="Remote">Remote</SelectItem>
-              <SelectItem value="Internship">Internship</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
       </div>
       
       <div className="mt-6 flex justify-end">
-        <Button onClick={handleSearch} className="px-8">
+        <Button onClick={handleSearch} className="px-8 bg-[#0A66C2] hover:bg-[#004182]">
           <Search className="h-4 w-4 mr-2" />
           Search Jobs
         </Button>

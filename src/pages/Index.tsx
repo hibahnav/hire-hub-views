@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { MainLayout } from "@/layouts/MainLayout";
 import { SearchFilters } from "@/components/SearchFilters";
@@ -13,7 +14,6 @@ const Index = () => {
   const [filters, setFilters] = useState({
     query: "",
     location: "",
-    jobType: ""
   });
 
   useEffect(() => {
@@ -23,7 +23,6 @@ const Index = () => {
   const filterJobs = (filters: {
     query: string;
     location: string;
-    jobType: string;
   }) => {
     let result = [...jobs];
     
@@ -45,17 +44,12 @@ const Index = () => {
       );
     }
     
-    if (filters.jobType) {
-      result = result.filter(job => job.type === filters.jobType);
-    }
-    
     setFilteredJobs(result);
   };
 
   const handleSearch = (newFilters: {
     query: string;
     location: string;
-    jobType: string;
   }) => {
     setFilters(newFilters);
   };
@@ -64,8 +58,8 @@ const Index = () => {
     <MainLayout>
       <section className="mb-12">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-foreground mb-4">
-            Find Your Perfect Job
+          <h1 className="text-4xl font-bold text-[#0A66C2] mb-4">
+            Better than LinkedIn
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Discover thousands of job opportunities with top employers to find your next career.
@@ -78,7 +72,7 @@ const Index = () => {
       <section className="mb-12">
         <div className="flex justify-between items-center mb-6">
           <div className="flex items-center space-x-2">
-            <Briefcase className="h-5 w-5 text-brand-600" />
+            <Briefcase className="h-5 w-5 text-[#0A66C2]" />
             <h2 className="text-2xl font-semibold">Featured Jobs</h2>
           </div>
           
@@ -108,15 +102,15 @@ const Index = () => {
       <section>
         <div className="flex justify-between items-center mb-6">
           <div className="flex items-center space-x-2">
-            <Building className="h-5 w-5 text-brand-600" />
+            <Building className="h-5 w-5 text-[#0A66C2]" />
             <h2 className="text-2xl font-semibold">Browse by Company</h2>
           </div>
           <Link to="/companies">
-            <Button variant="outline">View All Companies</Button>
+            <Button variant="outline" className="border-[#0A66C2] text-[#0A66C2] hover:bg-[#E6F7FF]">View All Companies</Button>
           </Link>
         </div>
         
-        <div className="bg-gradient-to-r from-brand-50 to-brand-100 rounded-lg p-6 border">
+        <div className="bg-gradient-to-r from-[#E6F7FF] to-[#F5F9FC] rounded-lg p-6 border border-[#E0E6EB]">
           <div className="text-center mb-6">
             <h3 className="text-xl font-medium mb-2">Explore Top Companies</h3>
             <p className="text-muted-foreground">
@@ -126,7 +120,7 @@ const Index = () => {
           
           <div className="flex justify-center">
             <Link to="/companies">
-              <Button className="px-8">
+              <Button className="px-8 bg-[#0A66C2] hover:bg-[#004182]">
                 Browse Companies
                 <Building className="ml-2 h-4 w-4" />
               </Button>
