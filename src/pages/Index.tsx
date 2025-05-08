@@ -6,8 +6,7 @@ import { JobCard } from "@/components/JobCard";
 import { jobs } from "@/mock/data";
 import { Job } from "@/mock/data";
 import { Button } from "@/components/ui/button";
-import { Briefcase, Building } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Briefcase } from "lucide-react";
 
 const Index = () => {
   const [filteredJobs, setFilteredJobs] = useState<Job[]>(jobs);
@@ -97,36 +96,6 @@ const Index = () => {
             </p>
           </div>
         )}
-      </section>
-      
-      <section>
-        <div className="flex justify-between items-center mb-6">
-          <div className="flex items-center space-x-2">
-            <Building className="h-5 w-5 text-[#0A66C2]" />
-            <h2 className="text-2xl font-semibold">Browse by Company</h2>
-          </div>
-          <Link to="/companies">
-            <Button variant="outline" className="border-[#0A66C2] text-[#0A66C2] hover:bg-[#E6F7FF]">View All Companies</Button>
-          </Link>
-        </div>
-        
-        <div className="bg-gradient-to-r from-[#E6F7FF] to-[#F5F9FC] rounded-lg p-6 border border-[#E0E6EB]">
-          <div className="text-center mb-6">
-            <h3 className="text-xl font-medium mb-2">Explore Top Companies</h3>
-            <p className="text-muted-foreground">
-              Discover great places to work
-            </p>
-          </div>
-          
-          <div className="flex justify-center">
-            <Link to="/companies">
-              <Button className="px-8 bg-[#0A66C2] hover:bg-[#004182]">
-                Browse Companies
-                <Building className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
-          </div>
-        </div>
       </section>
     </MainLayout>
   );
