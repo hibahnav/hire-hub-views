@@ -22,13 +22,13 @@ interface SearchFiltersProps {
 export function SearchFilters({ onSearch }: SearchFiltersProps) {
   const [query, setQuery] = useState("");
   const [location, setLocation] = useState("");
-  const [jobType, setJobType] = useState("");
+  const [jobType, setJobType] = useState("all");
   
   const handleSearch = () => {
     onSearch({
       query,
       location,
-      jobType
+      jobType: jobType === "all" ? "" : jobType
     });
   };
 
@@ -79,7 +79,7 @@ export function SearchFilters({ onSearch }: SearchFiltersProps) {
               <SelectValue placeholder="All job types" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">All job types</SelectItem>
+              <SelectItem value="all">All job types</SelectItem>
               <SelectItem value="Full-time">Full-time</SelectItem>
               <SelectItem value="Part-time">Part-time</SelectItem>
               <SelectItem value="Contract">Contract</SelectItem>
